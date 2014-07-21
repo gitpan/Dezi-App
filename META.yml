@@ -1,0 +1,66 @@
+---
+abstract: 'build Dezi search applications'
+author:
+  - 'Peter Karman, <karpet@dezi.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.59
+configure_requires:
+  ExtUtils::MakeMaker: 6.59
+distribution_type: module
+dynamic_config: 1
+generated_by: 'Module::Install version 1.08'
+license: http://dev.perl.org/licenses/
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Dezi-App
+no_index:
+  directory:
+    - inc
+    - t
+recommends:
+  DBI: 0
+  File::Find: 0
+  HTML::LinkExtor: 0
+  HTML::Tagset: 0
+  HTTP::Message: 0
+  HTTP::Server::Simple: 0
+  HTTP::Server::Simple::Authen: 0
+  JSON: 2
+  LWP::RobotUA: 0
+  Mail::Box: 0
+  Term::ProgressBar: 0
+  Test::HTTP::Server::Simple: 0
+  URI: 0
+  WWW::Sitemap::XML: 0
+  XML::Feed: 0
+  YAML::Syck: '0.72'
+requires:
+  Class::Load: 0
+  Config::General: '2.31'
+  Data::Dump: 0
+  DateTime::Format::DateParse: 0
+  File::Basename: 0
+  File::Rules: '0.02'
+  File::Temp: 0
+  Moose: 0
+  MooseX::StrictConstructor: 0
+  MooseX::Types::DateTime: 0
+  MooseX::Types::Path::Class: 0
+  Path::Class: '0.32'
+  SWISH::3: 1.000009
+  SWISH::Filter: '0.15'
+  Scalar::Util: 0
+  Search::Query: '0.300'
+  Search::Tools: '1.000'
+  Test::More: 0
+  Time::HiRes: 0
+  Type::Tiny: 0
+  Types::Standard: 0
+  perl: 5.8.3
+resources:
+  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dezi-App
+  homepage: http://dezi.org/
+  license: http://opensource.org/licenses/gpl-license.php
+  repository: https://github.com/karpet/dezi-app
+version: '0.003'

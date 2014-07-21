@@ -1,0 +1,12 @@
+Revision history for Dezi-App
+
+0.003  21 July 2014
+  - add ->make_immutable to all classes for speed.
+  - minor optimizations after running through NYTProf
+
+0.002  19 July 2014
+  - add missing CLI options for backcompat with swish3
+
+0.001  18 July 2014
+  - Initial release, ported from SWISH::Prog
+
