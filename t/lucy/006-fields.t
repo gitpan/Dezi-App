@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 18;
 use Data::Dump qw( dump );
 use Search::Tools::UTF8;
 
@@ -55,6 +55,16 @@ ok( $results = $searcher->search('bar:small'),
 is( $results->hits, 0, "no hits" );
 
 #show_results_by_uri($results);
+
+# multi-value fields
+ok( $results = $searcher->search('multivaluestore:"Chinese restaurants"'),
+    "multi-value field search" );
+is( $results->hits, 1, "1 multivalue hit" );
+is_deeply(
+    $results->next->get_property_array('multivaluestore'),
+    [ 'Chinese restaurants', 'Russian bars' ],
+    "multi-value store is case sensitive"
+);
 
 ###################################
 ## helper functions

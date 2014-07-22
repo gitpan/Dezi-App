@@ -55,6 +55,7 @@ bugtracker 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dezi-App';
 repository 'https://github.com/karpet/dezi-app';
 
 install_script 'bin/deziapp';
+install_script 'bin/lucyx-dump-terms';
 
 WriteMakefile(
     PL_FILES => {},

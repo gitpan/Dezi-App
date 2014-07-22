@@ -12,7 +12,7 @@ use Search::Query;
 use Search::Query::Parser;
 use namespace::sweep;
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 has 'max_hits' => ( is => 'rw', isa => Int, default => 1000 );
 has 'invindex' => (

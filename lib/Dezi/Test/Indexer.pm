@@ -6,7 +6,7 @@ use SWISH::3 qw( :constants );
 use Search::Tools::UTF8;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 sub invindex_class       {'Dezi::Test::InvIndex'}
 sub use_swish3_tokenizer {1}

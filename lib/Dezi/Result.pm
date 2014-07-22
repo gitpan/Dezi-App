@@ -5,7 +5,7 @@ with 'Dezi::Role';
 use Carp;
 use namespace::sweep;
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 has 'doc'          => ( is => 'ro', isa => 'Object',  required => 1, );
 has 'score'        => ( is => 'ro', isa => 'Num',     required => 1 );
@@ -105,6 +105,28 @@ sub get_property {
         return $self->$propname;
     }
     return $self->doc->property($propname);
+}
+
+=head2 get_property_array( I<property> )
+
+Returns the stored value for I<property> for the Result. Unlike
+get_property(), the value is always an arrayref, split
+on the libswish3 multi-value character.
+
+Example:
+
+ my $val    = $result->get_property('foo');       # "green\003blue"
+ my $arrval = $result->get_property_array('foo'); # ['green', 'blue']
+
+Note that return value will *always* be an arrayref, even if
+the original value does not contain a multi-value character.
+
+=cut
+
+sub get_property_array {
+    my $self = shift;
+    my $val  = $self->get_property(@_);
+    return [ split( /\003/, $val ) ];
 }
 
 =head2 property_map

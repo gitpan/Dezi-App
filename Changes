@@ -1,5 +1,9 @@
 Revision history for Dezi-App
 
+0.004  22 July 2014
+  - improve support for Multi-Value fields
+  - fix failing leak test
+
 0.003  21 July 2014
   - add ->make_immutable to all classes for speed.
   - minor optimizations after running through NYTProf

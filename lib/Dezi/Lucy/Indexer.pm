@@ -19,7 +19,7 @@ use Path::Class::File::Lockable;
 use Sys::Hostname qw( hostname );
 use Digest::MD5 ();
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 has 'highlightable_fields' =>
     ( is => 'rw', isa => 'Bool', default => sub {0} );
@@ -107,23 +107,32 @@ sub _build_lucy_delegates {
     my $analyzers   = {};
     my $case_folder = Lucy::Analysis::CaseFolder->new;
     my $tokenizer   = Lucy::Analysis::RegexTokenizer->new;
+    my $multival_tokenizer
+        = Lucy::Analysis::RegexTokenizer->new(
+        pattern => '[^' . SWISH_TOKENPOS_BUMPER() . ']+' );
+
+    # mimic StringType fields that require case and/or multival parsing.
+    $analyzers->{store_lc} = Lucy::Analysis::PolyAnalyzer->new(
+        analyzers => [ $multival_tokenizer, $case_folder ] );
+    $analyzers->{store} = $multival_tokenizer;
 
     # stemming means we fold case and tokenize too.
     if ( $lang and $lang =~ m/^\w\w$/ ) {
         my $stemmer
             = Lucy::Analysis::SnowballStemmer->new( language => $lang );
         $analyzers->{fulltext_lc}
-            = Lucy::Analysis::PolyAnalyzer->new(
-            analyzers => [ $case_folder, $tokenizer, $stemmer ] );
-        $analyzers->{store_lc} = $case_folder;
+            = Lucy::Analysis::PolyAnalyzer->new( analyzers =>
+                [ $multival_tokenizer, $case_folder, $tokenizer, $stemmer ] );
         $analyzers->{fulltext} = Lucy::Analysis::PolyAnalyzer->new(
-            analyzers => [ $tokenizer, $stemmer ] );
+            analyzers => [ $multival_tokenizer, $tokenizer, $stemmer ] );
     }
     else {
-        $analyzers->{fulltext_lc} = Lucy::Analysis::PolyAnalyzer->new(
-            analyzers => [ $case_folder, $tokenizer, ], );
-        $analyzers->{store_lc} = $case_folder;
-        $analyzers->{fulltext} = $tokenizer;
+        $analyzers->{fulltext_lc}
+            = Lucy::Analysis::PolyAnalyzer->new(
+            analyzers => [ $multival_tokenizer, $case_folder, $tokenizer, ],
+            );
+        $analyzers->{fulltext} = Lucy::Analysis::PolyAnalyzer->new(
+            analyzers => [ $multival_tokenizer, $tokenizer ] );
     }
 
     # cache our objects for later
@@ -285,22 +294,17 @@ sub _get_lucy_field_type {
         }
 
         #warn "spec prop !sort $name";
+        my $analyzer_key = 'store';
         if ( $def->{ignore_case} ) {
+            $analyzer_key = 'store_lc';
+        }
 
-            # StringType has no analyzer
-            # so we must switch to FullTextType and
-            # use a case-folding-only analyzer.
-            $type = Lucy::Plan::FullTextType->new(
-                analyzer      => $analyzers->{store_lc},
-                highlightable => $self->highlightable_fields,
-                sortable      => $def->{sortable},
-                boost         => $def->{bias} || 1.0,
-            );
-        }
-        else {
-            $type
-                = Lucy::Plan::StringType->new( sortable => $def->{sortable} );
-        }
+        $type = Lucy::Plan::FullTextType->new(
+            analyzer      => $analyzers->{$analyzer_key},
+            highlightable => $self->highlightable_fields,
+            sortable      => $def->{sortable},
+            boost         => $def->{bias} || 1.0,
+        );
     }
 
     $self->debug
@@ -439,7 +443,7 @@ sub swish3_handler {
 
     # serialize the doc with our tokenpos_bump char
     for my $k ( keys %doc ) {
-        $doc{$k} = to_utf8( join( "\003", @{ $doc{$k} } ) );
+        $doc{$k} = to_utf8( join( SWISH_TOKENPOS_BUMPER(), @{ $doc{$k} } ) );
     }
 
     $self->debug and carp dump \%doc;

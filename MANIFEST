@@ -1,4 +1,5 @@
 bin/deziapp
+bin/lucyx-dump-terms
 Changes
 inc/Module/Install.pm
 inc/Module/Install/Base.pm

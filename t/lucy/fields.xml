@@ -4,4 +4,6 @@
  <bing>WOMAN Man</bing>
  <storecaseinsensitive>FLIP hIGHEr</storecaseinsensitive>
  <tokenizecasesensitive>GLOWER bRIGHTLy</tokenizecasesensitive>
+ <multivaluestore>Chinese restaurants</multivaluestore>
+ <multivaluestore>Russian bars</multivaluestore>
 </doc>

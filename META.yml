@@ -63,4 +63,4 @@ resources:
   homepage: http://dezi.org/
   license: http://opensource.org/licenses/gpl-license.php
   repository: https://github.com/karpet/dezi-app
-version: '0.003'
+version: '0.004'
