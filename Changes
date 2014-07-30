@@ -1,5 +1,9 @@
 Revision history for Dezi-App
 
+0.006  30 July 2014
+  - allow Indexer::Doc->action and ->parser to be undef in new()
+  - fix Indexer::Config coercion from HashRef
+
 0.005  30 July 2014
   - optimizations
   - fix filter() option in Dezi::App to access a string as documented.

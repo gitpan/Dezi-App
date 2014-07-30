@@ -2,7 +2,7 @@ package Dezi::Indexer::Doc;
 use Moose;
 use MooseX::XSAccessor;
 with 'Dezi::Role';
-use Types::Standard qw( Str HashRef Int InstanceOf );
+use Types::Standard qw( Str HashRef Int InstanceOf Maybe );
 use Dezi::Types qw( DeziUriStr DeziEpoch );
 use Carp;
 use Data::Dump qw( dump );
@@ -15,7 +15,7 @@ use Dezi::Indexer::Headers;
 
 use namespace::sweep;
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 my $default_headers = Dezi::Indexer::Headers->new();
 
@@ -39,9 +39,9 @@ has 'modtime' => (
     lazy    => 1,
 );
 has 'type'    => ( is => 'rw', isa => Str );
-has 'parser'  => ( is => 'rw', isa => Str );
+has 'parser'  => ( is => 'rw', isa => Maybe [Str], );
 has 'content' => ( is => 'rw', isa => Str );
-has 'action'  => ( is => 'rw', isa => Str );
+has 'action'  => ( is => 'rw', isa => Maybe [Str], );
 has 'data'    => ( is => 'rw', isa => HashRef );
 has 'size'    => ( is => 'rw', isa => Int );
 has 'charset' => ( is => 'rw', isa => Str, default => sub {$charset} );

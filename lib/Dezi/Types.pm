@@ -22,6 +22,7 @@ class_type DeziIndexerConfig, { class => 'Dezi::Indexer::Config' };
 class_type DeziPathClassFile, { class => 'Path::Class::File' };
 coerce DeziIndexerConfig, from DeziPathClassFile,
     via { _coerce_indexer_config($_) },
+    from HashRef, via { _coerce_indexer_config($_) },
     from Str, via { _coerce_indexer_config($_) }, from Undef,
     via { _coerce_indexer_config($_) };
 
@@ -80,7 +81,7 @@ sub _coerce_indexer_config {
         $config2_object = Dezi::Indexer::Config->new( file => $config2 );
     }
     elsif ( !blessed($config2) && ref $config2 eq 'HASH' ) {
-        $config2_object = Dezi::Indexer::Config->new($config2);
+        $config2_object = Dezi::Indexer::Config->new(%$config2);
     }
     elsif ( blessed($config2) ) {
         if ( $config2->isa('Path::Class::File') ) {
