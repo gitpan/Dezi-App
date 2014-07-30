@@ -2,7 +2,7 @@ package SWISH::Prog::Lucy::Indexer;
 use strict;
 use warnings;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 use base qw( SWISH::Prog::Indexer );
 use SWISH::Prog::Lucy::InvIndex;

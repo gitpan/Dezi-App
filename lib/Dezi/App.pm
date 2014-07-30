@@ -11,7 +11,7 @@ use Dezi::Types qw( DeziIndexerConfig DeziInvIndex DeziFileOrCodeRef );
 use Dezi::ReplaceRules;
 use namespace::sweep;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 =head1 NAME
 
@@ -158,7 +158,11 @@ has 'invindex' => (
     isa    => DeziInvIndex,
     coerce => 1,
 );
-has 'filter' => ( is => 'rw', isa => DeziFileOrCodeRef );
+has 'filter' => (
+    is     => 'rw',
+    isa    => DeziFileOrCodeRef,
+    coerce => 1,
+);
 has 'test_mode' => ( is => 'rw', isa => Bool, default => 0 );
 
 # allow for short names. we map to class->new

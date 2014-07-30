@@ -12,7 +12,7 @@ use Data::Dump qw( dump );
 
 use namespace::sweep;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 has 'set_parser_from_type' => ( is => 'rw', isa => Bool, default => sub {1} );
 has 'indexer' => (
@@ -221,7 +221,9 @@ sub swish_filter {
         }
     }
 
-    if ( $self->swish_filter_obj->can_filter( $doc->type ) ) {
+    my $sfo = $self->swish_filter_obj;
+
+    if ( $sfo->can_filter( $doc->type ) ) {
 
         if ( $self->debug ) {
             warn sprintf
@@ -233,7 +235,7 @@ sub swish_filter {
         my $content = $doc->content;
         my $url     = $doc->url;
         my $type    = $doc->type;
-        my $f       = $self->swish_filter_obj->convert(
+        my $f       = $sfo->convert(
             document     => \$content,
             content_type => $type,
             name         => $url
@@ -273,7 +275,7 @@ sub swish_filter {
                 "No filter applied to %s - cannot filter %s (parser %s)\n",
                 $doc->url, $doc->type, $doc->parser, );
             warn sprintf( " available filter: %s\n", $_ )
-                for $self->swish_filter_obj->filter_list;
+                for $sfo->filter_list;
         }
 
     }

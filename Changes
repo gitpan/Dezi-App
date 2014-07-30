@@ -1,5 +1,11 @@
 Revision history for Dezi-App
 
+0.005  30 July 2014
+  - optimizations
+  - fix filter() option in Dezi::App to access a string as documented.
+  - warn if reserved field name is used in Indexer::Config
+  - add missing HTTP::Date dependency to Makefile.PL
+
 0.004  22 July 2014
   - improve support for Multi-Value fields
   - fix failing leak test

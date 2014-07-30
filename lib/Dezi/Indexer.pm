@@ -14,7 +14,7 @@ use Try::Tiny;
 
 use namespace::sweep;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 has 'invindex' => (
     is     => 'rw',

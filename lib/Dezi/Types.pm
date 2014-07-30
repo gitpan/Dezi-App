@@ -41,6 +41,7 @@ coerce DeziInvIndexArr, from ArrayRef, via {
 declare DeziFileOrCodeRef, as CodeRef;
 coerce DeziFileOrCodeRef, from Str, via {
     if ( -s $_ and -r $_ ) { return do $_ }
+    else { return Eval::Closure::eval_closure( source => $_ ) }
 };
 
 # File::Rules
@@ -49,7 +50,7 @@ coerce DeziFileRules, from ArrayRef, via { File::Rules->new($_) };
 
 # URI (coerce to Str)
 declare DeziUriStr, as Str;
-coerce DeziUriStr, from Object, via {"$_"};
+coerce DeziUriStr, from Object, q{"$_"};
 
 # Epoch
 declare DeziEpoch, as Maybe [Int];

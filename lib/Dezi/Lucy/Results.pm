@@ -4,7 +4,7 @@ extends 'Dezi::Results';
 use Dezi::Lucy::Result;
 use namespace::sweep;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 has 'find_relevant_fields' =>
     ( is => 'rw', isa => 'Bool', default => sub {0} );

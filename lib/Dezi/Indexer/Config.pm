@@ -21,7 +21,7 @@ use overload(
 
 use namespace::sweep;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 # only a few explicitly named attributes.
 # everything else is through AUTOLOAD.
@@ -29,6 +29,8 @@ has 'file' => ( is => 'rw', isa => 'Path::Class::File', coerce => 1, );
 has 'swish3_config' => ( is => 'ro', isa => Str );
 
 my $XML = Search::Tools::XML->new;
+
+my %ReservedFieldNames = map { $_ => 1 } qw(uri title summary mtime);
 
 my %unique = map { $_ => 1 } qw(
     MetaNames
@@ -1004,6 +1006,10 @@ KEY: for my $k ( sort keys %$config ) {
         $xml .= " <MetaNames>\n";
         for my $name ( sort keys %$metas ) {
             my $uname = to_utf8($name);
+            if ( exists $ReservedFieldNames{$uname} ) {
+                warn
+                    "'$uname' is a reserved field name and may clash at search time\n";
+            }
             $xml .= sprintf( "  <%s />\n",
                 $self->_make_tag( $uname, $metas->{$name} ) );
         }
@@ -1013,6 +1019,10 @@ KEY: for my $k ( sort keys %$config ) {
         $xml .= " <PropertyNames>\n";
         for my $name ( sort keys %$props ) {
             my $uname = to_utf8($name);
+            if ( exists $ReservedFieldNames{$uname} ) {
+                warn
+                    "'$uname' is a reserved field name and may clash at search time\n";
+            }
             $xml .= sprintf( "  <%s />\n",
                 $self->_make_tag( $uname, $props->{$name} ) );
         }
