@@ -20,18 +20,18 @@ use Data::Dump qw( dump );
 
 class_type DeziIndexerConfig, { class => 'Dezi::Indexer::Config' };
 class_type DeziPathClassFile, { class => 'Path::Class::File' };
-coerce DeziIndexerConfig, from DeziPathClassFile,
-    via { _coerce_indexer_config($_) },
-    from HashRef, via { _coerce_indexer_config($_) },
-    from Str, via { _coerce_indexer_config($_) }, from Undef,
-    via { _coerce_indexer_config($_) };
+coerce DeziIndexerConfig,    # wrap
+    from DeziPathClassFile, via { _coerce_indexer_config($_) },
+    from HashRef,           via { _coerce_indexer_config($_) },
+    from Str,               via { _coerce_indexer_config($_) },
+    from Undef,             via { _coerce_indexer_config($_) };
 
 # InvIndex
 class_type DeziInvIndex, { class => 'Dezi::InvIndex' };
-coerce DeziInvIndex, from DeziPathClassFile,
-    via { _coerce_invindex($_) }, from Str,
-    via { _coerce_invindex($_) }, from Undef,
-    via { Dezi::InvIndex->new() };
+coerce DeziInvIndex,         # wrap
+    from DeziPathClassFile, via { _coerce_invindex($_) },
+    from Str,               via { _coerce_invindex($_) },
+    from Undef,             via { Dezi::InvIndex->new() };
 
 declare DeziInvIndexArr, as ArrayRef [];
 coerce DeziInvIndexArr, from ArrayRef, via {

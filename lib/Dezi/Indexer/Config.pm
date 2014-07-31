@@ -1,7 +1,7 @@
 package Dezi::Indexer::Config;
 use Moose;
 with 'Dezi::Role';
-use Types::Standard qw( Str );
+use Types::Standard qw( Str HashRef );
 use MooseX::Types::Path::Class;
 use Carp;
 use Config::General;
@@ -21,10 +21,11 @@ use overload(
 
 use namespace::sweep;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 # only a few explicitly named attributes.
 # everything else is through AUTOLOAD.
+has '_orig_args' => ( is => 'ro', isa => HashRef, default => sub { {} } );
 has 'file' => ( is => 'rw', isa => 'Path::Class::File', coerce => 1, );
 has 'swish3_config' => ( is => 'ro', isa => Str );
 
@@ -212,7 +213,7 @@ around BUILDARGS => sub {
         return $class->$orig( file => $_[0] );
     }
     else {
-        return $class->$orig(@_);
+        return $class->$orig( @_, _orig_args => {@_} );
     }
 };
 
@@ -224,6 +225,12 @@ Internal method called by new().
 
 sub BUILD {
     my $self = shift;
+
+    # use our custom get/set methods on original args
+    my $orig = $self->_orig_args;
+    for my $k (keys %$orig) {
+        $self->$k( $orig->{$k} );
+    }
 
     $self->{swish3} = SWISH::3->new();
 
@@ -288,6 +295,7 @@ sub _set {
     my ( $key, $val, $append ) = @_;
 
     if ( $key eq 'file' or $key eq 'debug' ) {
+        confess "Moose should handle $key attribute";
         return $self->{$key} = $val;
     }
     elsif ( exists $unique{$key} ) {

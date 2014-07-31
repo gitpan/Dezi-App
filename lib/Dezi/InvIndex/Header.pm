@@ -9,7 +9,7 @@ use SWISH::3 qw( :constants );
 
 use namespace::sweep;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 has 'invindex' => ( is => 'rw', isa => DeziInvIndex, required => 1 );
 has 'file' => ( is => 'ro', isa => 'Path::Class::File', coerce => 1, );
@@ -49,12 +49,12 @@ sub _build_data {
     my $s3config = $self->swish3_config;
 
     $self->{data} = {
-        SWISH_PROP()    => $s3config->get_properties,
-        SWISH_META()    => $s3config->get_metanames,
-        SWISH_MIME()    => $s3config->get_mimes,
-        SWISH_PARSERS() => $s3config->get_parsers,
-        SWISH_INDEX()   => $s3config->get_index,
-        SWISH_ALIAS()   => $s3config->get_aliases,
+        SWISH_PROP()    => $s3config->get_properties->_as_hash,
+        SWISH_META()    => $s3config->get_metanames->_as_hash,
+        SWISH_MIME()    => $s3config->get_mimes->_as_hash,
+        SWISH_PARSERS() => $s3config->get_parsers->_as_hash,
+        SWISH_INDEX()   => $s3config->get_index->_as_hash,
+        SWISH_ALIAS()   => $s3config->get_aliases->_as_hash,
     };
 
     # add any leftovers

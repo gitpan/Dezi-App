@@ -11,6 +11,6 @@ ok( my $invindex = Dezi::InvIndex->new( path => 't/' ),
 
 ok( my $header = $invindex->get_header, "get header" );
 
-diag( dump $header->Index->keys );
+diag( dump $header->Index );
 
 is( $header->Index->{Format}, 'Test', "Test index format" );

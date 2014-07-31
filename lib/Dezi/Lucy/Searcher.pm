@@ -24,7 +24,7 @@ use Search::Query::Dialect::Lucy;
 
 use namespace::sweep;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 has 'find_relevant_fields' => ( is => 'rw', isa => Bool, default => sub {0} );
 has 'nfs_mode'             => ( is => 'rw', isa => Bool, default => sub {0} );
@@ -152,10 +152,10 @@ sub _build_lucy {
             analyzer => $schema->fetch_analyzer($name)
         };
         if ( exists $metanames->{$name}
-            and defined $metanames->{$name}->alias_for )
+            and defined $metanames->{$name}->{alias_for} )
         {
             $fieldtypes{$name}->{alias_for}
-                = $metanames->{$name}->alias_for;
+                = $metanames->{$name}->{alias_for};
         }
     }
 

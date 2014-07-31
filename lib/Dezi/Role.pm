@@ -2,7 +2,7 @@ package Dezi::Role;
 use Moose::Role;
 use Dezi::Types qw( DeziLogLevel );
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 has 'debug' => (
     is      => 'rw',

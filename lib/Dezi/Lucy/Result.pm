@@ -5,7 +5,7 @@ use SWISH::3 ':constants';
 use Carp;
 use namespace::sweep;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 has 'relevant_fields' => ( is => 'rw', isa => 'ArrayRef' );
 

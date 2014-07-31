@@ -1,5 +1,10 @@
 Revision history for Dezi-App
 
+0.008  31 July 2014
+  - bump SWISH::3 dependency to 1.0.10
+  - InvIndex::Header->data now coerces into full hash on build.
+  - fix bug where Indexer::Config->new($hashref) was ignoring $hashref
+
 0.007  31 July 2014
   - add missing dependencies to Makefile.PL
 
