@@ -12,7 +12,7 @@ use Try::Tiny;
 use Dezi::App;
 use Dezi::InvIndex;
 
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 our $CLI_NAME = 'deziapp';
 

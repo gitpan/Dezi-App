@@ -1,5 +1,8 @@
 Revision history for Dezi-App
 
+0.007  31 July 2014
+  - add missing dependencies to Makefile.PL
+
 0.006  30 July 2014
   - allow Indexer::Doc->action and ->parser to be undef in new()
   - fix Indexer::Config coercion from HashRef

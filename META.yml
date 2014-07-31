@@ -23,6 +23,7 @@ recommends:
   File::Find: 0
   HTML::LinkExtor: 0
   HTML::Tagset: 0
+  HTTP::Cookies: 0
   HTTP::Message: 0
   HTTP::Server::Simple: 0
   HTTP::Server::Simple::Authen: 0
@@ -44,16 +45,20 @@ requires:
   File::Rules: '0.02'
   File::Temp: 0
   HTTP::Date: 0
+  Lucy: 0.003002
   Moose: 0
   MooseX::StrictConstructor: 0
   MooseX::Types::DateTime: 0
   MooseX::Types::Path::Class: 0
   MooseX::XSAccessor: 0
   Path::Class: '0.32'
+  Path::Class::File::Lockable: 0
+  Path::Class::File::Stat: '0.05'
   SWISH::3: 1.000009
   SWISH::Filter: '0.15'
   Scalar::Util: 0
   Search::Query: '0.300'
+  Search::Query::Dialect::Lucy: '0.200'
   Search::Tools: '1.000'
   Test::More: 0
   Time::HiRes: 0
@@ -65,4 +70,4 @@ resources:
   homepage: http://dezi.org/
   license: http://opensource.org/licenses/gpl-license.php
   repository: https://github.com/karpet/dezi-app
-version: '0.006'
+version: '0.007'
