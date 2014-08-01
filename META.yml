@@ -60,7 +60,10 @@ requires:
   Search::Query: '0.300'
   Search::Query::Dialect::Lucy: '0.200'
   Search::Tools: '1.000'
+  Sort::SQL: 0
+  Sys::Hostname: 0
   Test::More: 0
+  Text::ParseWords: 0
   Time::HiRes: 0
   Type::Tiny: 0
   Types::Standard: 0
@@ -70,4 +73,4 @@ resources:
   homepage: http://dezi.org/
   license: http://opensource.org/licenses/gpl-license.php
   repository: https://github.com/karpet/dezi-app
-version: '0.008'
+version: '0.009'

@@ -5,7 +5,7 @@ use Carp;
 use Types::Standard qw( Int ArrayRef Str Maybe );
 use namespace::sweep;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 has 'start' => (
     is      => 'rw',

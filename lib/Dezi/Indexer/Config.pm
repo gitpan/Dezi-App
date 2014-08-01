@@ -21,7 +21,7 @@ use overload(
 
 use namespace::sweep;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 # only a few explicitly named attributes.
 # everything else is through AUTOLOAD.

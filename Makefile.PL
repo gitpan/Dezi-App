@@ -33,6 +33,9 @@ requires 'SWISH::3'                     => 1.000010;
 requires 'Lucy'                         => 0.003002;
 requires 'Class::Load'                  => 0;
 requires 'HTTP::Date'                   => 0;
+requires 'Sort::SQL'                    => 0;
+requires 'Text::ParseWords'             => 0;
+requires 'Sys::Hostname'                => 0;
 
 # recommended Aggregator support
 
