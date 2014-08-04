@@ -6,7 +6,7 @@ use bytes;    # so length() measures bytes
 
 has 'version' => ( is => 'ro', default => sub {'3'} );
 
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 our $AutoURL = time();
 our %Headers = (
     2 => {

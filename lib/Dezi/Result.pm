@@ -5,7 +5,7 @@ with 'Dezi::Role';
 use Carp;
 use namespace::sweep;
 
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 has 'doc'          => ( is => 'ro', isa => 'Object',  required => 1, );
 has 'score'        => ( is => 'ro', isa => 'Num',     required => 1 );

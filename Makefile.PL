@@ -13,7 +13,7 @@ requires 'Path::Class'                  => '0.32';
 requires 'Path::Class::File::Lockable'  => 0;
 requires 'Path::Class::File::Stat'      => '0.05';
 requires 'File::Rules'                  => '0.02';
-requires 'SWISH::Filter'                => '0.15';
+requires 'SWISH::Filter'                => '0.190';
 requires 'DateTime::Format::DateParse'  => 0;
 requires 'Type::Tiny'                   => 0;
 requires 'Types::Standard'              => 0;
@@ -36,6 +36,10 @@ requires 'HTTP::Date'                   => 0;
 requires 'Sort::SQL'                    => 0;
 requires 'Text::ParseWords'             => 0;
 requires 'Sys::Hostname'                => 0;
+
+# SWISH::Filters::Decompress requires these, and so do our tests
+requires 'Compress::Zlib'               => 0;
+requires 'CAM::PDF'                     => 0;
 
 # recommended Aggregator support
 

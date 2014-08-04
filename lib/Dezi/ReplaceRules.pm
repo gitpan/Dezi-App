@@ -5,9 +5,10 @@ use Scalar::Util qw( blessed );
 use Carp;
 use Data::Dump qw( dump );
 use Text::ParseWords;
+use Try::Tiny;
 use namespace::sweep;
 
-our $VERSION = '0.009';
+our $VERSION = '0.010';
 
 has 'rules' => ( is => 'rw', isa => 'ArrayRef' );
 
@@ -153,8 +154,12 @@ sub apply {
         if ( $action eq 'replace' ) {
             my $b = $target->{before};
             my $a = $target->{after};
-            $str =~ s/$b/$a/g;
-            die "Bad rule: $orig ($@)" if $@;
+            try {
+                $str =~ s/$b/$a/g;
+            }
+            catch {
+                die "Bad rule: $orig ($_)";
+            };
         }
         if ( $action eq 'regex' ) {
             my $d    = $target->{delim};
@@ -164,8 +169,12 @@ sub apply {
             my $code = "\$str =~ s/$b/$a/$o";
 
             #warn "code='$code'\n";
-            eval "$code";
-            die "Bad rule: $orig ($@)" if $@;
+            try {
+                eval "$code";
+            }
+            catch {
+                die "Bad rule: $orig ($_)";
+            }
         }
 
         #warn "$orig applied to '$str'\n";
