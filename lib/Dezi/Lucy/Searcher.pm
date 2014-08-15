@@ -24,7 +24,7 @@ use Search::Query::Dialect::Lucy;
 
 use namespace::sweep;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 has 'find_relevant_fields' => ( is => 'rw', isa => Bool, default => sub {0} );
 has 'nfs_mode'             => ( is => 'rw', isa => Bool, default => sub {0} );
@@ -265,8 +265,8 @@ sub search {
         $parsed_query = $self->qp->parse($query)
             or confess "Invalid query: " . $self->qp->error;
     }
-    elsif ( !$query->isa('Search::Tools::Dialect') ) {
-        confess "query must be a string or a Search::Tools::Dialect object";
+    elsif ( !$query->isa('Search::Query::Dialect') ) {
+        confess "query must be a string or a Search::Query::Dialect object";
     }
 
     my %hits_args = (

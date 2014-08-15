@@ -19,7 +19,7 @@ use Path::Class::File::Lockable;
 use Sys::Hostname qw( hostname );
 use Digest::MD5 ();
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 has 'highlightable_fields' =>
     ( is => 'rw', isa => 'Bool', default => sub {0} );

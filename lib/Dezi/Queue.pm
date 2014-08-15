@@ -3,7 +3,7 @@ use Moose;
 with 'Dezi::Role';
 use Carp;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 =pod
 

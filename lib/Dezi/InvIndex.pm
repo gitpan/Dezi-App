@@ -16,7 +16,7 @@ use overload(
 
 use namespace::sweep;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 our $DEFAULT_NAME = 'dezi.index';
 
