@@ -1,5 +1,8 @@
 Revision history for Dezi-App
 
+0.011  14 Aug 2014
+  - add missing MooseX::Getopt to Makefile.PL for deziapp CLI
+
 0.010  04 Aug 2014
   - use Try::Tiny in ReplaceRules
   - require Compress::Zlib on behalf of SWISH::Filter

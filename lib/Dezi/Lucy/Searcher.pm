@@ -24,7 +24,7 @@ use Search::Query::Dialect::Lucy;
 
 use namespace::sweep;
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 has 'find_relevant_fields' => ( is => 'rw', isa => Bool, default => sub {0} );
 has 'nfs_mode'             => ( is => 'rw', isa => Bool, default => sub {0} );

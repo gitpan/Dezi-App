@@ -27,7 +27,7 @@ else {
     while ( my $file = $ver2_dir->next ) {
         next if -d $file;
 
-        #diag("converting $file");
+        diag("converting $file");
         my $xml = Dezi::Indexer::Config->ver2_to_ver3( "$file", 1 );
 
         #diag($xml);
@@ -36,7 +36,7 @@ else {
         my $ver3_file = $ver3_dir->file( $filename . ".xml" );
 
         if ($generate_xml) {
-            write_file( "$ver3_file", $xml );
+            $ver3_file->spew($xml);
         }
         else {
             my $ver3 = Search::Tools->slurp("$ver3_file");

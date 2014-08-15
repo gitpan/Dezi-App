@@ -6,7 +6,7 @@ use Dezi::Aggregator::Mail;    # delegate doc creation
 use Carp;
 use Data::Dump qw( dump );
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 =pod
 

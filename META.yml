@@ -49,6 +49,7 @@ requires:
   HTTP::Date: 0
   Lucy: 0.003002
   Moose: 0
+  MooseX::Getopt: 0
   MooseX::StrictConstructor: 0
   MooseX::Types::DateTime: 0
   MooseX::Types::Path::Class: 0
@@ -75,4 +76,4 @@ resources:
   homepage: http://dezi.org/
   license: http://opensource.org/licenses/gpl-license.php
   repository: https://github.com/karpet/dezi-app
-version: '0.010'
+version: '0.011'

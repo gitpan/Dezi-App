@@ -15,7 +15,7 @@ use Dezi::Indexer::Headers;
 
 use namespace::sweep;
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 my $default_headers = Dezi::Indexer::Headers->new();
 

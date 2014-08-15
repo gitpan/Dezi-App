@@ -9,7 +9,7 @@ use Data::Dump qw( dump );
 use Search::Tools::UTF8;
 use Dezi::Aggregator::Spider::Response;
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 # if Compress::Zlib is installed, this should handle gzip transparently.
 # thanks to
