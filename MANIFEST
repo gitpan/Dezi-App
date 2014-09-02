@@ -20,7 +20,6 @@ lib/Dezi/Cache.pm
 lib/Dezi/Indexer.pm
 lib/Dezi/Indexer/Config.pm
 lib/Dezi/Indexer/Doc.pm
-lib/Dezi/Indexer/Headers.pm
 lib/Dezi/InvIndex.pm
 lib/Dezi/InvIndex/Header.pm
 lib/Dezi/Queue.pm

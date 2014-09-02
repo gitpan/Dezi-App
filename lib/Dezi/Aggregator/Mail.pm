@@ -8,7 +8,7 @@ use Data::Dump qw( dump );
 use Search::Tools::XML;
 use Mail::Box::Manager;
 
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 my $XMLer = Search::Tools::XML->new();
 

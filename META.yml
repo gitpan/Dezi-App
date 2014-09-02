@@ -57,7 +57,7 @@ requires:
   Path::Class: '0.32'
   Path::Class::File::Lockable: 0
   Path::Class::File::Stat: '0.05'
-  SWISH::3: 1.00001
+  SWISH::3: 1.000012
   SWISH::Filter: '0.190'
   Scalar::Util: 0
   Search::Query: '0.300'
@@ -76,4 +76,4 @@ resources:
   homepage: http://dezi.org/
   license: http://opensource.org/licenses/gpl-license.php
   repository: https://github.com/karpet/dezi-app
-version: '0.012'
+version: '0.013'

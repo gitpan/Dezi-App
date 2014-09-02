@@ -9,7 +9,7 @@ use SWISH::3 qw( :constants );
 
 use namespace::sweep;
 
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 has 'invindex' => ( is => 'rw', isa => DeziInvIndex, required => 1 );
 has 'file' => ( is => 'ro', isa => 'Path::Class::File', coerce => 1, );

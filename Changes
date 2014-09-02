@@ -1,5 +1,9 @@
 Revision history for Dezi-App
 
+0.013  01 Sept 2014
+  - move Dezi::Indexer::Headers to SWISH::3::Headers, require SWISH::3 1.000012
+  - add 'boost' param to internal Compiler object in D::Lucy::Searcher, for Lucy 0.4.0
+
 0.012  15 Aug 2014
   - fix error checking in Lucy::Searcher to Search::Query::Dialect
   - zapped .svn from git repo (never included in dist)

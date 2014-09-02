@@ -11,13 +11,13 @@ use overload(
     'bool'   => sub {1},
     fallback => 1,
 );
-use Dezi::Indexer::Headers;
+use SWISH::3::Headers;
 
 use namespace::sweep;
 
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
-my $default_headers = Dezi::Indexer::Headers->new();
+my $default_headers = SWISH::3::Headers->new();
 
 my ( $locale, $lang, $charset );
 {
@@ -48,7 +48,7 @@ has 'charset' => ( is => 'rw', isa => Str, default => sub {$charset} );
 has 'version' => ( is => 'rw', isa => Str, default => sub {3} );
 has 'headers' => (
     is       => 'rw',
-    isa      => InstanceOf ['Dezi::Indexer::Headers'],
+    isa      => InstanceOf ['SWISH::3::Headers'],
     default  => sub {$default_headers},
     required => 1,
 );
@@ -166,7 +166,7 @@ sub filter { }
 =head2 as_string
 
 Return the Doc object rendered as a scalar string, ready to be indexed.
-This will include the proper headers. See Dezi::Indexer::Headers.
+This will include the proper headers. See L<SWISH::3::Headers>.
 
 B<NOTE:> as_string() is also used if you use a Doc object as a string.
 Example:
